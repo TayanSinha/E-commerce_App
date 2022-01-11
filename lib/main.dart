@@ -71,7 +71,7 @@ class _SecondClassState extends State<SecondClass>
     scaleAnimation =
         Tween<double>(begin: 0.0, end: 12).animate(scaleController);
 
-    Timer(Duration(seconds: 2), () {
+    Timer(Duration(seconds: 3), () {
       setState(() {
         scaleController.forward();
       });
@@ -87,14 +87,20 @@ class _SecondClassState extends State<SecondClass>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pink[100],
+      backgroundColor: Colors.black,
       body: Center(
         child: DefaultTextStyle(
           style: TextStyle(fontSize: 30.0),
           child: AnimatedTextKit(
             animatedTexts: [
               TyperAnimatedText(
-                'AITU STORES',
+                'AITU ',
+                textStyle: TextStyle(color: Colors.white, fontSize: 30),
+                speed: Duration(milliseconds: 150),
+              ),
+              TyperAnimatedText(
+                ' STORES',
+                textStyle: TextStyle(color: Colors.yellow, fontSize: 30),
                 speed: Duration(milliseconds: 150),
               ),
             ],
