@@ -13,29 +13,29 @@ class Welcome extends StatelessWidget {
         home: Scaffold(
             body: Scaffold(
           backgroundColor: Colors.black,
-          body: Center(
-              child: Column(
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               Image.asset(
                 "assets/images/welbg.jpg",
                 fit: BoxFit.contain,
               ),
-              SizedBox(
-                height: 15,
-              ),
-              Row(children: [
+              Column(children: [
                 SizedBox(
                   width: 25,
                 ),
                 Text(
-                  "AITU \n",
-                  style: TextStyle(color: Colors.white, fontSize: 25),
+                  "AITU ",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 45,
+                  ),
                 ),
                 Text(
-                  "STORES\n",
+                  "STORES",
                   style: TextStyle(
                     color: Colors.red,
-                    fontSize: 25,
+                    fontSize: 45,
                   ),
                 ),
               ]),
@@ -71,7 +71,7 @@ class Welcome extends StatelessWidget {
                 ],
               ),
             ],
-          )),
+          ),
         )));
   }
 }

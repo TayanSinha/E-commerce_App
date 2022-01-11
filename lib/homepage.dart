@@ -1,11 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables,
 
-import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:sa/pages/clothes.dart';
 import 'package:sa/pages/electronics.dart';
 import 'package:sa/pages/grocery.dart';
 import 'package:sa/pages/medicine.dart';
+import 'package:sa/pages/search.dart';
 import 'package:sa/pages/settings.dart';
 
 class HomePage extends StatelessWidget {
@@ -28,11 +28,7 @@ class HomePage extends StatelessWidget {
       children: <Widget>[
         drawerHeader,
         ListTile(
-            title: const Text('Gallery'),
-            onTap: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const Settings()))),
-        ListTile(
-            title: const Text('Product'),
+            title: const Text('My Orders'),
             onTap: () => Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const Settings()))),
         ListTile(
@@ -43,11 +39,15 @@ class HomePage extends StatelessWidget {
             title: const Text('Settings'),
             onTap: () => Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const Settings()))),
+        ListTile(
+            title: const Text('Sign Out'),
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const Settings()))),
       ],
     );
     return Scaffold(
         appBar: AppBar(
-            backgroundColor: Colors.red[300],
+            backgroundColor: Colors.red,
             title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -55,10 +55,8 @@ class HomePage extends StatelessWidget {
                   IconButton(
                     icon: const Icon(Icons.search),
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Settings()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Search()));
                     },
                   )
                 ])),
@@ -187,13 +185,13 @@ class HomePage extends StatelessWidget {
                       )),
                 ),
               ]),
-              SizedBox(
-                height: 50,
-              ),
-
-              SizedBox(
-                height: 50,
-              ),
+//               SizedBox(
+//                 height: 50,
+//               ),
+// //carousel
+//               SizedBox(
+//                 height: 50,
+//               ),
               Card(
                 child: SizedBox(
                   height: 400,

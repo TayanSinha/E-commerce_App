@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, avoid_unnecessary_containers, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:sa/pages/checkoutpage.dart';
 
 class Electronics extends StatefulWidget {
   Electronics({Key? key}) : super(key: key);
@@ -54,7 +55,7 @@ class _ElectronicsState extends State<Electronics> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Electronics()));
+                                        builder: (context) => Checkout()));
                               },
                             ),
                             Text(
@@ -86,7 +87,7 @@ class _ElectronicsState extends State<Electronics> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Electronics()));
+                                        builder: (context) => Checkout()));
                               },
                             ),
                             Text(
@@ -118,7 +119,7 @@ class _ElectronicsState extends State<Electronics> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Electronics()));
+                                        builder: (context) => Checkout()));
                               },
                             ),
                             Text(
@@ -150,7 +151,7 @@ class _ElectronicsState extends State<Electronics> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Electronics()));
+                                        builder: (context) => Checkout()));
                               },
                             ),
                             Text(
@@ -182,7 +183,7 @@ class _ElectronicsState extends State<Electronics> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Electronics()));
+                                        builder: (context) => Checkout()));
                               },
                             ),
                             Text(
@@ -214,7 +215,7 @@ class _ElectronicsState extends State<Electronics> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Electronics()));
+                                        builder: (context) => Checkout()));
                               },
                             ),
                             Text(
@@ -246,7 +247,7 @@ class _ElectronicsState extends State<Electronics> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Electronics()));
+                                        builder: (context) => Checkout()));
                               },
                             ),
                             Text(
@@ -278,7 +279,7 @@ class _ElectronicsState extends State<Electronics> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Electronics()));
+                                        builder: (context) => Checkout()));
                               },
                             ),
                             Text(

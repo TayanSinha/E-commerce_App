@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, avoid_unnecessary_containers, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:sa/pages/checkoutpage.dart';
 
 class Grocery extends StatefulWidget {
   Grocery({Key? key}) : super(key: key);
@@ -55,7 +56,7 @@ class _GroceryState extends State<Grocery> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Grocery()));
+                                        builder: (context) => Checkout()));
                               },
                             ),
                             Text(
@@ -88,7 +89,7 @@ class _GroceryState extends State<Grocery> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Grocery()));
+                                        builder: (context) => Checkout()));
                               },
                             ),
                             Text(
@@ -121,7 +122,7 @@ class _GroceryState extends State<Grocery> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Grocery()));
+                                        builder: (context) => Checkout()));
                               },
                             ),
                             Text(
@@ -154,7 +155,7 @@ class _GroceryState extends State<Grocery> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Grocery()));
+                                        builder: (context) => Checkout()));
                               },
                             ),
                             Text(
@@ -185,7 +186,7 @@ class _GroceryState extends State<Grocery> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Grocery()));
+                                        builder: (context) => Checkout()));
                               },
                             ),
                             Text(
@@ -218,7 +219,7 @@ class _GroceryState extends State<Grocery> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Grocery()));
+                                        builder: (context) => Checkout()));
                               },
                             ),
                             Text(
@@ -251,7 +252,7 @@ class _GroceryState extends State<Grocery> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Grocery()));
+                                        builder: (context) => Checkout()));
                               },
                             ),
                             Text(
@@ -284,7 +285,7 @@ class _GroceryState extends State<Grocery> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Grocery()));
+                                        builder: (context) => Checkout()));
                               },
                             ),
                             Text(

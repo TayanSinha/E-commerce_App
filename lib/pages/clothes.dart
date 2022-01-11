@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors_in_immutables, avoid_unnecessary_containers, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:sa/pages/checkoutpage.dart';
 
 class Clothes extends StatefulWidget {
   Clothes({Key? key}) : super(key: key);
@@ -55,7 +56,7 @@ class _ClothesState extends State<Clothes> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Clothes()));
+                                        builder: (context) => Checkout()));
                               },
                             ),
                             Text(
@@ -88,7 +89,7 @@ class _ClothesState extends State<Clothes> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Clothes()));
+                                        builder: (context) => Checkout()));
                               },
                             ),
                             Text(
@@ -121,7 +122,7 @@ class _ClothesState extends State<Clothes> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Clothes()));
+                                        builder: (context) => Checkout()));
                               },
                             ),
                             Text(
@@ -154,7 +155,7 @@ class _ClothesState extends State<Clothes> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Clothes()));
+                                        builder: (context) => Checkout()));
                               },
                             ),
                             Text(
@@ -186,7 +187,7 @@ class _ClothesState extends State<Clothes> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Clothes()));
+                                        builder: (context) => Checkout()));
                               },
                             ),
                             Text(
@@ -218,7 +219,7 @@ class _ClothesState extends State<Clothes> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Clothes()));
+                                        builder: (context) => Checkout()));
                               },
                             ),
                             Text(
@@ -250,7 +251,7 @@ class _ClothesState extends State<Clothes> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Clothes()));
+                                        builder: (context) => Checkout()));
                               },
                             ),
                             Text(
@@ -282,7 +283,7 @@ class _ClothesState extends State<Clothes> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Clothes()));
+                                        builder: (context) => Checkout()));
                               },
                             ),
                             Text(
