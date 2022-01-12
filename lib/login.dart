@@ -3,8 +3,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sa/homepage.dart';
+import 'package:sa/pages/forgetpassword.dart';
 import 'package:sa/register.dart';
-
 import 'package:sa/utils/color.dart';
 import 'package:sa/utils/reusable.dart';
 
@@ -48,9 +48,10 @@ class LoginState extends State<Login> {
                 reusableTextField("Enter Password", Icons.lock_outline, true,
                     _passwordTextController),
                 SizedBox(
-                  height: 30,
+                  height: 5,
                 ),
-                signInSignUpButton(context, true, () {
+                forgotPassword(context),
+                firebaaseButton(context, "Sign In", () {
                   FirebaseAuth.instance
                       .signInWithEmailAndPassword(
                           email: _emailTextController.text,
@@ -91,6 +92,23 @@ class LoginState extends State<Login> {
           ),
         )
       ],
+    );
+  }
+
+  Widget forgotPassword(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: 35,
+      alignment: Alignment.bottomRight,
+      child: TextButton(
+        child: Text(
+          "forget password?",
+          style: TextStyle(color: Colors.white70),
+          textAlign: TextAlign.right,
+        ),
+        onPressed: () => Navigator.push(
+            context, MaterialPageRoute(builder: (context) => ForgetPassword())),
+      ),
     );
   }
 }

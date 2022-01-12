@@ -16,8 +16,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const drawerHeader = UserAccountsDrawerHeader(
-      accountName: Text('AITU STORES'),
-      accountEmail: Text('aitusupport@yahoo.com'),
+      accountName: Text('E-Royal Mart'),
+      accountEmail: Text('eroyalmartsupport@yahoo.com'),
       currentAccountPicture: CircleAvatar(
         backgroundColor: Colors.white,
         child: Icon(
@@ -58,7 +58,7 @@ class HomePage extends StatelessWidget {
             title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  const Text('AITU STORES'),
+                  const Text('E-Royal Mart'),
                   IconButton(
                     icon: const Icon(Icons.search),
                     onPressed: () {

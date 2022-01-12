@@ -56,7 +56,6 @@ class _RegisterState extends State<Register> {
                 const SizedBox(
                   height: 20,
                 ),
-
                 const SizedBox(
                   height: 30,
                 ),
@@ -75,7 +74,7 @@ class _RegisterState extends State<Register> {
                 const SizedBox(
                   height: 20,
                 ),
-                signInSignUpButton(context, false, () {
+                firebaaseButton(context, "Sign Up", () {
                   FirebaseAuth.instance
                       .createUserWithEmailAndPassword(
                           email: _emailTextController.text,
@@ -97,20 +96,6 @@ class _RegisterState extends State<Register> {
                     );
                   });
                 })
-
-                // firebaseUIButton(context, "Sign Up", () {
-                //   FirebaseAuth.instance
-                //       .createUserWithEmailAndPassword(
-                //           email: _emailTextController.text,
-                //           password: _passwordTextController.text)
-                //       .then((value) {
-                //     print("Created New Account");
-                //     Navigator.push(context,
-                //         MaterialPageRoute(builder: (context) => const HomePage()));
-                //   }).onError((error, stackTrace) {
-                //     print("Error ${error.toString()}");
-                //   });
-                // })
               ],
             ),
           ))),
