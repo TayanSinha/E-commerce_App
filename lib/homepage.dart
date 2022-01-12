@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables,
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sa/login.dart';
 import 'package:sa/pages/clothes.dart';
 import 'package:sa/pages/electronics.dart';
 import 'package:sa/pages/grocery.dart';
@@ -41,8 +43,13 @@ class HomePage extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const Settings()))),
         ListTile(
             title: const Text('Sign Out'),
-            onTap: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const Settings()))),
+            onTap: () {
+              FirebaseAuth.instance.signOut().then((value) {
+                // print("signed Out");
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const Login()));
+              });
+            }),
       ],
     );
     return Scaffold(

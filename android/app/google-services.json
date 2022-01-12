@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "270235269932",
+    "project_id": "aitu-stores",
+    "storage_bucket": "aitu-stores.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:270235269932:android:37ae2853c3326d68c98a89",
+        "android_client_info": {
+          "package_name": "com.example.sa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "270235269932-ainol574gnguf18ha6gcrc5r52lgclig.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sa",
+            "certificate_hash": "e201a96fe408a7f63bf85c7fedfe5db4d521b2b6"
+          }
+        },
+        {
+          "client_id": "270235269932-8eqgq787povv96v8l5eqthk6pbccspa4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYNzuG1tKTNljjPHEp08Nl8APPBldSjJ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "270235269932-8eqgq787povv96v8l5eqthk6pbccspa4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
