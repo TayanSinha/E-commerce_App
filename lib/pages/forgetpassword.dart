@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, prefer_const_constructors
 import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:sa/homepage.dart';
@@ -50,15 +50,45 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                 const SizedBox(
                   height: 20,
                 ),
-                reusableTextField("Enter Email Id", Icons.person_outline, false,
-                    _emailTextController),
+                reusableTextField(
+                    "Enter Email Id",
+                    Icons.person_outline,
+                    false,
+                    _emailTextController,
+                    "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]",
+                    "Please Enter Your Email",
+                    "Please Enter a valid email"),
                 const SizedBox(
                   height: 20,
                 ),
                 firebaaseButton(context, "Reset Password", () {
                   FirebaseAuth.instance
                       .sendPasswordResetEmail(email: _emailTextController.text)
-                      .then((value) => Navigator.of(context).pop());
+                      .then((value) {
+                    SnackBar(
+                      content: Text("Email Send",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold)),
+                      duration: Duration(seconds: 5),
+                      backgroundColor: Colors.black,
+                    );
+                    Navigator.of(context).pop();
+                  }).onError((error, stackTrace) {
+                    String err = (" Error: ${error.toString()}");
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(err,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold)),
+                        duration: Duration(seconds: 5),
+                        backgroundColor: Colors.black,
+                      ),
+                    );
+                  });
                 })
               ],
             ),

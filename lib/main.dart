@@ -1,10 +1,11 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, unused_import
-
+// @dart=2.9
 import 'dart:async';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:animations/animations.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:sa/homepage.dart';
 import 'package:sa/login.dart';
@@ -18,8 +19,6 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -41,8 +40,8 @@ class SecondClass extends StatefulWidget {
 
 class _SecondClassState extends State<SecondClass>
     with TickerProviderStateMixin {
-  late AnimationController scaleController;
-  late Animation<double> scaleAnimation;
+  AnimationController scaleController;
+  Animation<double> scaleAnimation;
 
   @override
   void initState() {
@@ -96,13 +95,15 @@ class _SecondClassState extends State<SecondClass>
           child: AnimatedTextKit(
             animatedTexts: [
               TyperAnimatedText(
-                'E-Royal ',
-                textStyle: TextStyle(color: Colors.white, fontSize: 30),
+                'E-Royal',
+                textStyle: GoogleFonts.indieFlower(
+                    textStyle: TextStyle(fontSize: 50, color: Colors.white)),
                 speed: Duration(milliseconds: 150),
               ),
               TyperAnimatedText(
                 ' Mart',
-                textStyle: TextStyle(color: Colors.yellow, fontSize: 30),
+                textStyle: GoogleFonts.indieFlower(
+                    textStyle: TextStyle(fontSize: 50, color: Colors.yellow)),
                 speed: Duration(milliseconds: 150),
               ),
             ],
@@ -117,8 +118,6 @@ class _SecondClassState extends State<SecondClass>
 }
 
 class Welcome extends StatelessWidget {
-  const Welcome({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -135,35 +134,30 @@ class Welcome extends StatelessWidget {
                         "assets/images/welbg.jpg",
                         fit: BoxFit.contain,
                       ),
-                      Column(children: const [
-                        SizedBox(
-                          width: 25,
-                        ),
-                        Text(
-                          "E-Royal ",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 45,
-                          ),
-                        ),
-                        Text(
-                          "Mart",
-                          style: TextStyle(
-                            color: Colors.red,
-                            fontSize: 45,
-                          ),
-                        ),
+                      SizedBox(
+                        height: 50,
+                      ),
+                      Column(children: [
+                        Text("E-Royal ",
+                            style: GoogleFonts.indieFlower(
+                                textStyle: TextStyle(
+                                    fontSize: 60, color: Colors.white))),
+                        Text("Mart",
+                            style: GoogleFonts.indieFlower(
+                                textStyle:
+                                    TextStyle(fontSize: 60, color: Colors.red)))
                       ]),
                       Row(
                         children: [
                           SizedBox(
-                            width: 155,
+                            width: 150,
+                            height: 200,
                           ),
                           GestureDetector(
                             child: Text(
                               "Get Started",
                               style:
-                                  TextStyle(color: Colors.white, fontSize: 15),
+                                  TextStyle(color: Colors.white, fontSize: 20),
                             ),
                             onTap: () {
                               Navigator.push(

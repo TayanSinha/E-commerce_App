@@ -7,6 +7,9 @@ import 'package:sa/pages/forgetpassword.dart';
 import 'package:sa/register.dart';
 import 'package:sa/utils/color.dart';
 import 'package:sa/utils/reusable.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'main.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -15,9 +18,15 @@ class Login extends StatefulWidget {
   LoginState createState() => LoginState();
 }
 
+late SharedPreferences localStorage;
+
 class LoginState extends State<Login> {
   final TextEditingController _passwordTextController = TextEditingController();
   final TextEditingController _emailTextController = TextEditingController();
+  static Future init() async {
+    localStorage = await SharedPreferences.getInstance();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,27 +49,52 @@ class LoginState extends State<Login> {
                 SizedBox(
                   height: 30,
                 ),
-                reusableTextField("Enter Email Id", Icons.person_outline, false,
-                    _emailTextController),
+                reusableTextField(
+                    "Enter Email Id",
+                    Icons.person_outline,
+                    false,
+                    _emailTextController,
+                    "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]",
+                    "Please Enter Your Email",
+                    "Please Enter a valid email"),
                 SizedBox(
                   height: 10,
                 ),
-                reusableTextField("Enter Password", Icons.lock_outline, true,
-                    _passwordTextController),
+                reusableTextField(
+                    "Enter Password",
+                    Icons.lock_outline,
+                    true,
+                    _passwordTextController,
+                    "r'^.{6,}\$'",
+                    "Password is required for login",
+                    "Enter Valid Password(Min. 6 Character)"),
                 SizedBox(
                   height: 5,
                 ),
                 forgotPassword(context),
-                firebaaseButton(context, "Sign In", () {
+                firebaaseButton(context, "Sign In", () async {
                   FirebaseAuth.instance
                       .signInWithEmailAndPassword(
                           email: _emailTextController.text,
                           password: _passwordTextController.text)
                       .then((value) {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomePage()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomePage()),
+                    );
                   }).onError((error, stackTrace) {
-                    // print("Error ${error.toString()}");
+                    String err = (" Error: ${error.toString()}");
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(err,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold)),
+                        duration: Duration(seconds: 5),
+                        backgroundColor: Colors.black,
+                      ),
+                    );
                   });
                 }),
                 signUpOption(),
@@ -110,5 +144,11 @@ class LoginState extends State<Login> {
             context, MaterialPageRoute(builder: (context) => ForgetPassword())),
       ),
     );
+  }
+
+  save() async {
+    await LoginState.init();
+    localStorage.setString('email', _emailTextController.text.toString());
+    localStorage.setString('password', _passwordTextController.text.toString());
   }
 }

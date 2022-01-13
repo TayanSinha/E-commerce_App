@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, prefer_const_constructors
 
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:ui';
@@ -59,18 +59,36 @@ class _RegisterState extends State<Register> {
                 const SizedBox(
                   height: 30,
                 ),
-                reusableTextField("Enter UserName", Icons.person_outline, false,
-                    _userNameTextController),
+                reusableTextField(
+                    "Enter UserName",
+                    Icons.person_outline,
+                    false,
+                    _userNameTextController,
+                    "",
+                    "Please Enter Your UserName",
+                    "Please Enter a valid UserName"),
                 const SizedBox(
                   height: 20,
                 ),
-                reusableTextField("Enter Email Id", Icons.person_outline, false,
-                    _emailTextController),
+                reusableTextField(
+                    "Enter Email Id",
+                    Icons.person_outline,
+                    false,
+                    _emailTextController,
+                    "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]",
+                    "Please Enter Your Email",
+                    "Please Enter a valid email"),
                 const SizedBox(
                   height: 20,
                 ),
-                reusableTextField("Enter Password (minimum 6 characters)",
-                    Icons.lock_outlined, true, _passwordTextController),
+                reusableTextField(
+                    "Enter Password (minimum 6 characters)",
+                    Icons.lock_outlined,
+                    true,
+                    _passwordTextController,
+                    "r'^.{6,}\$'",
+                    "Password is required for login",
+                    "Enter Valid Password(Min. 6 Character)"),
                 const SizedBox(
                   height: 20,
                 ),
@@ -80,19 +98,29 @@ class _RegisterState extends State<Register> {
                           email: _emailTextController.text,
                           password: _passwordTextController.text)
                       .then((value) {
-                    const AlertDialog(
-                      content: Text("Signed Up Sucessfully  "),
-                      elevation: 24.0,
+                    SnackBar(
+                      content: Text("Registered Sucessfully",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold)),
+                      duration: Duration(seconds: 5),
+                      backgroundColor: Colors.black,
                     );
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const HomePage()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomePage()));
                   }).onError((error, stackTrace) {
-                    // print("Error ${error.toString()}");
-                    const AlertDialog(
-                      content: Text("Error  "),
-                      elevation: 24.0,
+                    String err = (" Error: ${error.toString()}");
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(err,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold)),
+                        duration: Duration(seconds: 5),
+                        backgroundColor: Colors.black,
+                      ),
                     );
                   });
                 })

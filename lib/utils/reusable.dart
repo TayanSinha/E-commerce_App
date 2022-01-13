@@ -1,11 +1,14 @@
+// import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 Image logoWidget(String imageName) {
   return Image.asset(
     imageName,
     fit: BoxFit.fitWidth,
     width: 240,
-    height: 240,
+    height: 300,
   );
 }
 
@@ -13,15 +16,24 @@ Image logoWidget2(String imageName) {
   return Image.asset(
     imageName,
     fit: BoxFit.fitWidth,
-    width: 60,
+    width: 40,
     height: 60,
   );
 }
 
-TextField reusableTextField(String text, IconData icon, bool isPasswordType,
-    TextEditingController controller) {
-  return TextField(
+TextFormField reusableTextField(String text, IconData icon, bool isPasswordType,
+    TextEditingController controller, String reg, String empty, String wrong) {
+  return TextFormField(
     controller: controller,
+    validator: (value) {
+      RegExp regex = RegExp(reg);
+      if (value!.isEmpty) {
+        return (empty);
+      }
+      if (!regex.hasMatch(value)) {
+        return (wrong);
+      }
+    },
     obscureText: isPasswordType,
     enableSuggestions: !isPasswordType,
     autocorrect: !isPasswordType,
@@ -73,4 +85,10 @@ Container firebaaseButton(BuildContext context, String title, Function onTap) {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)))),
     ),
   );
+}
+
+Text reusabletext(String text, double size, var color) {
+  return Text(text,
+      style: GoogleFonts.indieFlower(
+          textStyle: TextStyle(fontSize: size, color: color)));
 }

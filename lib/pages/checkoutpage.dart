@@ -175,8 +175,13 @@ class _CheckoutState extends State<Checkout> {
                           ),
                           onPressed: () {
                             SnackBar(
-                              content: Text("Under Construction"),
-                              duration: Duration(milliseconds: 1000),
+                              content: Text("Under Construction",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold)),
+                              duration: Duration(seconds: 5),
+                              backgroundColor: Colors.black,
                             );
                           },
                           child: Text(

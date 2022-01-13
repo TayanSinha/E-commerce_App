@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
+import 'package:sa/utils/reusable.dart';
 
 class Search extends StatefulWidget {
   const Search({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class _SearchState extends State<Search> {
             pinned: true,
             snap: false,
             centerTitle: false,
-            title: Text('AITU Stores'),
+            title: reusabletext("E-Royal Mart", 20, Colors.white),
             actions: [
               IconButton(
                 icon: Icon(Icons.shopping_cart),

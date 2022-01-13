@@ -1,64 +1,115 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables,
 
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sa/login.dart';
+import 'package:sa/pages/aboutus.dart';
 import 'package:sa/pages/clothes.dart';
 import 'package:sa/pages/electronics.dart';
 import 'package:sa/pages/grocery.dart';
 import 'package:sa/pages/medicine.dart';
 import 'package:sa/pages/search.dart';
 import 'package:sa/pages/settings.dart';
+import 'package:sa/utils/reusable.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    const drawerHeader = UserAccountsDrawerHeader(
-      accountName: Text('E-Royal Mart'),
-      accountEmail: Text('eroyalmartsupport@yahoo.com'),
+    final drawerHeader = UserAccountsDrawerHeader(
+      accountName: reusabletext("E-Royal Mart", 20, Colors.white),
+      accountEmail:
+          reusabletext("eroyalmartsupport@yahoo.com", 20, Colors.white),
       currentAccountPicture: CircleAvatar(
-        backgroundColor: Colors.white,
-        child: Icon(
-          Icons.shopping_cart,
-          color: Colors.blue,
-        ),
+        backgroundColor: Colors.black,
+        child: logoWidget2("assets/images/logo.png"),
       ),
     );
     final drawerItems = ListView(
       children: <Widget>[
         drawerHeader,
+        SizedBox(
+          height: 50,
+        ),
         ListTile(
-            title: const Text('My Orders'),
-            onTap: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const Settings()))),
-        ListTile(
-            title: const Text('About Us'),
-            onTap: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const Settings()))),
-        ListTile(
-            title: const Text('Settings'),
-            onTap: () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const Settings()))),
-        ListTile(
-            title: const Text('Sign Out'),
+            title: Text('My Orders',
+                style: GoogleFonts.indieFlower(
+                    textStyle: TextStyle(fontSize: 25, color: Colors.black))),
             onTap: () {
-              FirebaseAuth.instance.signOut().then((value) {
-                // print("signed Out");
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Login()));
-              });
+              SnackBar(
+                content: Text("Your OrderList is Empty",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold)),
+                duration: Duration(seconds: 5),
+                backgroundColor: Colors.black,
+              );
+            }),
+        SizedBox(
+          height: 20,
+        ),
+        ListTile(
+            title: Text('About Us',
+                style: GoogleFonts.indieFlower(
+                    textStyle: TextStyle(fontSize: 25, color: Colors.black))),
+            onTap: () => Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Aboutus()))),
+        SizedBox(
+          height: 20,
+        ),
+        ListTile(
+            title: Text('Settings',
+                style: GoogleFonts.indieFlower(
+                    textStyle: TextStyle(fontSize: 25, color: Colors.black))),
+            onTap: () => Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Settings()))),
+        SizedBox(
+          height: 20,
+        ),
+        ListTile(
+            title: Text('Sign Out',
+                style: GoogleFonts.indieFlower(
+                    textStyle: TextStyle(fontSize: 25, color: Colors.black))),
+            onTap: () {
+              FirebaseAuth.instance.signOut().then(
+                (value) {
+                  SnackBar(
+                    content: Text("Signed Out Sucessfully",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold)),
+                    duration: Duration(seconds: 5),
+                    backgroundColor: Colors.black,
+                  );
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const Login()));
+                },
+              );
             }),
       ],
     );
+    final List<String> imagesList = [
+      'assets/images/elec3.jpg',
+      'assets/images/gro2.jpeg',
+      'assets/images/clo6.jpeg',
+      'assets/images/med4.jpg',
+    ];
     return Scaffold(
+        backgroundColor: Colors.yellow[50],
         appBar: AppBar(
             backgroundColor: Colors.red,
             title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  const Text('E-Royal Mart'),
+                  Text('E-Royal Mart',
+                      style: GoogleFonts.indieFlower(
+                          textStyle:
+                              TextStyle(fontSize: 30, color: Colors.white))),
                   IconButton(
                     icon: const Icon(Icons.search),
                     onPressed: () {
@@ -96,9 +147,12 @@ class HomePage extends StatelessWidget {
                             },
                           ),
                           SizedBox(
-                            height: 20,
+                            height: 10,
                           ),
-                          Text("ELECTRONICS"),
+                          Text("ELECTRONICS",
+                              style: GoogleFonts.indieFlower(
+                                  textStyle: TextStyle(
+                                      fontSize: 20, color: Colors.blue))),
                         ],
                       )),
                 ),
@@ -124,9 +178,12 @@ class HomePage extends StatelessWidget {
                             },
                           ),
                           SizedBox(
-                            height: 20,
+                            height: 10,
                           ),
-                          Text("CLOTHES"),
+                          Text("CLOTHES",
+                              style: GoogleFonts.indieFlower(
+                                  textStyle: TextStyle(
+                                      fontSize: 20, color: Colors.blue))),
                         ],
                       )),
                 ),
@@ -157,9 +214,12 @@ class HomePage extends StatelessWidget {
                             },
                           ),
                           SizedBox(
-                            height: 20,
+                            height: 10,
                           ),
-                          Text("GROCERY"),
+                          Text("GROCERY",
+                              style: GoogleFonts.indieFlower(
+                                  textStyle: TextStyle(
+                                      fontSize: 20, color: Colors.blue))),
                         ],
                       )),
                 ),
@@ -185,20 +245,16 @@ class HomePage extends StatelessWidget {
                             },
                           ),
                           SizedBox(
-                            height: 20,
+                            height: 10,
                           ),
-                          Text("MEDICINE"),
+                          Text("MEDICINE",
+                              style: GoogleFonts.indieFlower(
+                                  textStyle: TextStyle(
+                                      fontSize: 20, color: Colors.blue))),
                         ],
                       )),
                 ),
               ]),
-//               SizedBox(
-//                 height: 50,
-//               ),
-// //carousel
-//               SizedBox(
-//                 height: 50,
-//               ),
               Card(
                 child: SizedBox(
                   height: 400,
@@ -208,8 +264,10 @@ class HomePage extends StatelessWidget {
                         height: 30,
                       ),
                       Text(
-                        "Deal of the Day",
-                        style: (TextStyle(fontSize: 25, fontFamily: "")),
+                        "Deal of the Day,",
+                        style: GoogleFonts.indieFlower(
+                            textStyle:
+                                TextStyle(fontSize: 30, color: Colors.red)),
                       ),
                       SizedBox(
                         height: 0,
@@ -217,7 +275,8 @@ class HomePage extends StatelessWidget {
                       GestureDetector(
                         child: Image.asset(
                           "assets/images/laptop.png",
-                          height: 300,
+                          height: 250,
+                          width: 400,
                         ),
                         onTap: () {
                           Navigator.push(
@@ -226,17 +285,69 @@ class HomePage extends StatelessWidget {
                                   builder: (context) => Electronics()));
                         },
                       ),
-                      Text("MRP:₹45,990.00 (Inclusive of all taxes)"),
-                      Text(
-                        "See all details",
-                        style: (TextStyle(
-                            color: Colors.blue,
-                            decoration: TextDecoration.underline)),
-                      )
+                      Text("MRP:₹45,990.00 (Inclusive of all taxes)",
+                          style: GoogleFonts.indieFlower(
+                              textStyle: TextStyle(
+                                  fontSize: 20, color: Colors.black))),
+                      Text("(See all details)",
+                          style: GoogleFonts.indieFlower(
+                              textStyle:
+                                  TextStyle(fontSize: 20, color: Colors.blue)))
                     ],
                   ),
                 ),
               ),
+              SizedBox(
+                height: 19,
+              ),
+              Text(
+                "Deals For You",
+                style: GoogleFonts.indieFlower(
+                    textStyle: TextStyle(fontSize: 30, color: Colors.red)),
+              ),
+              SizedBox(
+                height: 19,
+              ),
+              CarouselSlider(
+                options: CarouselOptions(
+                  viewportFraction: 0.6,
+                  autoPlayAnimationDuration: const Duration(milliseconds: 100),
+                  enlargeCenterPage: true,
+                  autoPlay: true,
+                ),
+                items: imagesList
+                    .map(
+                      (item) => Center(
+                        child: Image.asset(
+                          item,
+                          fit: BoxFit.cover,
+                          width: 300,
+                          height: 400,
+                        ),
+                      ),
+                    )
+                    .toList(),
+              ),
+              SizedBox(
+                height: 29,
+              ),
+              // Swiper(
+              //   autoplay: true,
+              //   scrollDirection: Axis.horizontal,
+              //   layout: SwiperLayout.STACK,
+              //   itemCount: imageList.length,
+              //   pagination:
+              //       SwiperPagination(builder: SwiperPagination.fraction),
+              //   itemBuilder: (context, index) {
+              //     return Image.asset(
+              //       imageList[index],
+              //       fit: BoxFit.fill,
+              //     );
+              //   },
+              //   itemWidth: 500,
+              //   itemHeight: 300,
+              // ),
+
               Card(
                 child: SizedBox(
                   height: 400,
@@ -246,10 +357,10 @@ class HomePage extends StatelessWidget {
                       SizedBox(
                         height: 25,
                       ),
-                      Text(
-                        "Up to 42% off | Clothes & appliances",
-                        style: (TextStyle(fontSize: 20, fontFamily: "")),
-                      ),
+                      Text("Up to 42% off | Clothes & appliances",
+                          style: GoogleFonts.indieFlower(
+                              textStyle:
+                                  TextStyle(fontSize: 25, color: Colors.red))),
                       SizedBox(
                         height: 25,
                       ),
@@ -266,7 +377,7 @@ class HomePage extends StatelessWidget {
                       ),
                       Row(children: [
                         SizedBox(
-                          width: 80,
+                          width: 50,
                           height: 70,
                         ),
                         Icon(
@@ -278,10 +389,12 @@ class HomePage extends StatelessWidget {
                         ),
                         Text(
                           "No Cost EMI",
-                          style: TextStyle(color: Colors.green),
+                          style: GoogleFonts.indieFlower(
+                              textStyle:
+                                  TextStyle(fontSize: 20, color: Colors.green)),
                         ),
                         SizedBox(
-                          width: 20,
+                          width: 10,
                         ),
                         Icon(
                           Icons.card_travel,
@@ -292,7 +405,9 @@ class HomePage extends StatelessWidget {
                         ),
                         Text(
                           "Sheduled Delivery",
-                          style: TextStyle(color: Colors.green),
+                          style: GoogleFonts.indieFlower(
+                              textStyle:
+                                  TextStyle(fontSize: 20, color: Colors.green)),
                         )
                       ])
                     ],
@@ -301,11 +416,12 @@ class HomePage extends StatelessWidget {
               ),
 //
               SizedBox(
-                height: 40,
+                height: 20,
               ),
               Text(
                 "Interesting Finds",
-                style: TextStyle(fontSize: 25, color: Colors.red),
+                style: GoogleFonts.indieFlower(
+                    textStyle: TextStyle(fontSize: 30, color: Colors.red)),
               ),
               Row(children: [
                 SizedBox(
@@ -334,12 +450,16 @@ class HomePage extends StatelessWidget {
                             },
                           ),
                           SizedBox(
-                            height: 20,
+                            height: 10,
                           ),
-                          Text("Mobile Stands"),
+                          Text("Mobile Stands",
+                              style: GoogleFonts.indieFlower(
+                                  textStyle: TextStyle(
+                                      fontSize: 25, color: Colors.black))),
                           Text(
                             "From ₹299 ",
-                            style: TextStyle(color: Colors.green),
+                            style: GoogleFonts.indieFlower(
+                                textStyle: TextStyle(color: Colors.green)),
                           )
                         ],
                       )),
@@ -366,12 +486,16 @@ class HomePage extends StatelessWidget {
                             },
                           ),
                           SizedBox(
-                            height: 20,
+                            height: 10,
                           ),
-                          Text("Furniture"),
+                          Text("Furniture",
+                              style: GoogleFonts.indieFlower(
+                                  textStyle: TextStyle(
+                                      fontSize: 25, color: Colors.black))),
                           Text(
                             "Up to 80% off ",
-                            style: TextStyle(color: Colors.green),
+                            style: GoogleFonts.indieFlower(
+                                textStyle: TextStyle(color: Colors.green)),
                           )
                         ],
                       )),
@@ -405,12 +529,16 @@ class HomePage extends StatelessWidget {
                             },
                           ),
                           SizedBox(
-                            height: 20,
+                            height: 5,
                           ),
-                          Text("Medicines"),
+                          Text("Medicines",
+                              style: GoogleFonts.indieFlower(
+                                  textStyle: TextStyle(
+                                      fontSize: 25, color: Colors.black))),
                           Text(
                             "At you doresteps 24x7 ",
-                            style: TextStyle(color: Colors.green),
+                            style: GoogleFonts.indieFlower(
+                                textStyle: TextStyle(color: Colors.green)),
                           )
                         ],
                       )),
@@ -437,12 +565,16 @@ class HomePage extends StatelessWidget {
                             },
                           ),
                           SizedBox(
-                            height: 20,
+                            height: 10,
                           ),
-                          Text("Vegitable"),
+                          Text("Vegitable",
+                              style: GoogleFonts.indieFlower(
+                                  textStyle: TextStyle(
+                                      fontSize: 25, color: Colors.black))),
                           Text(
                             "Delivery Free for first order ",
-                            style: TextStyle(color: Colors.green),
+                            style: GoogleFonts.indieFlower(
+                                textStyle: TextStyle(color: Colors.green)),
                           ),
                         ],
                       )),
