@@ -36,18 +36,22 @@ class Aboutus extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.pink[100],
         appBar: AppBar(
+          backgroundColor: Colors.red[300],
           title: Text("About Us",
               style: GoogleFonts.indieFlower(
                   textStyle: TextStyle(fontSize: 30, color: Colors.white))),
         ),
         body: Column(
           children: [
-            SizedBox(height: 40),
+            SizedBox(height: 30),
             Text("Developers Profile",
                 style: GoogleFonts.indieFlower(
                     textStyle: TextStyle(fontSize: 35, color: Colors.black))),
+            Text("(Tap on card to know more)",
+                style: GoogleFonts.indieFlower(
+                    textStyle: TextStyle(fontSize: 20, color: Colors.black))),
             SizedBox(
-              height: 30,
+              height: 20,
             ),
             Swiper(
               autoplay: true,

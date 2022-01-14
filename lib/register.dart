@@ -98,15 +98,15 @@ class _RegisterState extends State<Register> {
                           email: _emailTextController.text,
                           password: _passwordTextController.text)
                       .then((value) {
-                    SnackBar(
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text("Registered Sucessfully",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 15,
                               fontWeight: FontWeight.bold)),
                       duration: Duration(seconds: 5),
-                      backgroundColor: Colors.black,
-                    );
+                      backgroundColor: Colors.red[300],
+                    ));
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => HomePage()));
                   }).onError((error, stackTrace) {

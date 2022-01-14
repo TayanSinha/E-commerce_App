@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables,
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables,, import_of_legacy_library_into_null_safe
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -23,6 +23,7 @@ class HomePage extends StatelessWidget {
       accountName: reusabletext("E-Royal Mart", 20, Colors.white),
       accountEmail:
           reusabletext("eroyalmartsupport@yahoo.com", 20, Colors.white),
+      decoration: BoxDecoration(color: Colors.red[300]),
       currentAccountPicture: CircleAvatar(
         backgroundColor: Colors.black,
         child: logoWidget2("assets/images/logo.png"),
@@ -39,15 +40,15 @@ class HomePage extends StatelessWidget {
                 style: GoogleFonts.indieFlower(
                     textStyle: TextStyle(fontSize: 25, color: Colors.black))),
             onTap: () {
-              SnackBar(
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                 content: Text("Your OrderList is Empty",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 15,
                         fontWeight: FontWeight.bold)),
                 duration: Duration(seconds: 5),
-                backgroundColor: Colors.black,
-              );
+                backgroundColor: Colors.red[300],
+              ));
             }),
         SizedBox(
           height: 20,
@@ -77,15 +78,15 @@ class HomePage extends StatelessWidget {
             onTap: () {
               FirebaseAuth.instance.signOut().then(
                 (value) {
-                  SnackBar(
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     content: Text("Signed Out Sucessfully",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,
                             fontWeight: FontWeight.bold)),
                     duration: Duration(seconds: 5),
-                    backgroundColor: Colors.black,
-                  );
+                    backgroundColor: Colors.red[300],
+                  ));
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const Login()));
                 },
@@ -102,7 +103,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.yellow[50],
         appBar: AppBar(
-            backgroundColor: Colors.red,
+            backgroundColor: Colors.red[300],
             title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -584,7 +585,9 @@ class HomePage extends StatelessWidget {
 //
             ])),
         drawer: Drawer(
+            child: Container(
+          color: Colors.yellow[50],
           child: drawerItems,
-        ));
+        )));
   }
 }

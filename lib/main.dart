@@ -1,8 +1,10 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, unused_import
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, unused_import, non_constant_identifier_names
 // @dart=2.9
 import 'dart:async';
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:animations/animations.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

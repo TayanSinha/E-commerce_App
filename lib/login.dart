@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unused_field
+// ignore_for_file: prefer_const_constructors, unused_field, non_constant_identifier_names
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -9,8 +9,6 @@ import 'package:sa/utils/color.dart';
 import 'package:sa/utils/reusable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'main.dart';
-
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
@@ -18,14 +16,9 @@ class Login extends StatefulWidget {
   LoginState createState() => LoginState();
 }
 
-late SharedPreferences localStorage;
-
 class LoginState extends State<Login> {
-  final TextEditingController _passwordTextController = TextEditingController();
   final TextEditingController _emailTextController = TextEditingController();
-  static Future init() async {
-    localStorage = await SharedPreferences.getInstance();
-  }
+  final TextEditingController _passwordTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -82,6 +75,15 @@ class LoginState extends State<Login> {
                       context,
                       MaterialPageRoute(builder: (context) => HomePage()),
                     );
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text("Signed In Sucessfully",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold)),
+                      duration: Duration(seconds: 5),
+                      backgroundColor: Colors.red[300],
+                    ));
                   }).onError((error, stackTrace) {
                     String err = (" Error: ${error.toString()}");
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -92,7 +94,7 @@ class LoginState extends State<Login> {
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold)),
                         duration: Duration(seconds: 5),
-                        backgroundColor: Colors.black,
+                        backgroundColor: Colors.red[300],
                       ),
                     );
                   });
@@ -144,11 +146,5 @@ class LoginState extends State<Login> {
             context, MaterialPageRoute(builder: (context) => ForgetPassword())),
       ),
     );
-  }
-
-  save() async {
-    await LoginState.init();
-    localStorage.setString('email', _emailTextController.text.toString());
-    localStorage.setString('password', _passwordTextController.text.toString());
   }
 }

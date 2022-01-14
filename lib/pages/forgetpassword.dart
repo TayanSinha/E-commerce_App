@@ -65,16 +65,16 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                   FirebaseAuth.instance
                       .sendPasswordResetEmail(email: _emailTextController.text)
                       .then((value) {
-                    SnackBar(
+                    Navigator.of(context).pop();
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text("Email Send",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 15,
                               fontWeight: FontWeight.bold)),
                       duration: Duration(seconds: 5),
-                      backgroundColor: Colors.black,
-                    );
-                    Navigator.of(context).pop();
+                      backgroundColor: Colors.red[300],
+                    ));
                   }).onError((error, stackTrace) {
                     String err = (" Error: ${error.toString()}");
                     ScaffoldMessenger.of(context).showSnackBar(
@@ -85,7 +85,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold)),
                         duration: Duration(seconds: 5),
-                        backgroundColor: Colors.black,
+                        backgroundColor: Colors.red[300],
                       ),
                     );
                   });

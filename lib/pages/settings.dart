@@ -14,6 +14,7 @@ class Settings extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.pink[100],
         appBar: AppBar(
+          backgroundColor: Colors.red[300],
           title: reusabletext("Settings", 30, Colors.white),
         ),
         body: SingleChildScrollView(
@@ -26,26 +27,38 @@ class Settings extends StatelessWidget {
                   child: firebaaseButton(context, "Sign Out", () {
                 FirebaseAuth.instance.signOut().then(
                   (value) {
-                    const SnackBar(
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => const Login()));
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                       content: Text("Signed Out Sucessfully",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 15,
                               fontWeight: FontWeight.bold)),
                       duration: Duration(seconds: 5),
-                      backgroundColor: Colors.black,
-                    );
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const Login()));
+                      backgroundColor: Colors.redAccent,
+                    ));
                   },
                 );
               })),
-              firebaaseButton(context, "Reset Password", () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ForgetPassword()));
-              })
+              // if (localStorage != null)
+              //   Padding(
+              //     padding: const EdgeInsets.all(15.0),
+              //     child: Text(
+              //       "User Logged in!!! ->  Email Id: ${localStorage.get('email')}  Password: ${localStorage.get('password')}",
+              //       style: const TextStyle(fontSize: 20),
+              //     ),
+              //   ),
+              firebaaseButton(
+                context,
+                "Reset Password",
+                () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ForgetPassword()));
+                },
+              )
             ])));
   }
 }

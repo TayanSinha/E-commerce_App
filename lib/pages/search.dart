@@ -14,9 +14,11 @@ class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.yellow[50],
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            backgroundColor: Colors.red[300],
             floating: true,
             pinned: true,
             snap: false,
@@ -25,10 +27,21 @@ class _SearchState extends State<Search> {
             actions: [
               IconButton(
                 icon: Icon(Icons.shopping_cart),
-                onPressed: () {},
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text("Your Cart is Empty",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold)),
+                    duration: Duration(seconds: 5),
+                    backgroundColor: Colors.red[300],
+                  ));
+                },
               ),
             ],
             bottom: AppBar(
+              backgroundColor: Colors.red[300],
               title: Container(
                 width: double.infinity,
                 height: 40,
@@ -36,9 +49,9 @@ class _SearchState extends State<Search> {
                 child: Center(
                   child: TextField(
                     decoration: InputDecoration(
-                        hintText: 'Search for something',
-                        prefixIcon: Icon(Icons.search),
-                        suffixIcon: Icon(Icons.camera_alt)),
+                      hintText: 'Search for something',
+                      prefixIcon: Icon(Icons.search),
+                    ),
                   ),
                 ),
               ),
