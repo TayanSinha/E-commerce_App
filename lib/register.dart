@@ -107,8 +107,9 @@ class _RegisterState extends State<Register> {
                       duration: Duration(seconds: 5),
                       backgroundColor: Colors.red[300],
                     ));
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomePage()));
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(builder: (context) => HomePage()),
+                        (Route<dynamic> route) => false);
                   }).onError((error, stackTrace) {
                     String err = (" Error: ${error.toString()}");
                     ScaffoldMessenger.of(context).showSnackBar(

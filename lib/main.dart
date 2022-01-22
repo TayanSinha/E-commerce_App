@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, unused_import, non_constant_identifier_names
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, unused_import, non_constant_identifier_names, avoid_print
 // @dart=2.9
 import 'dart:async';
 
@@ -13,8 +13,11 @@ import 'package:sa/homepage.dart';
 import 'package:sa/login.dart';
 import 'package:sa/pages/electronics.dart';
 import 'package:sa/pages/medicine.dart';
+import 'package:sa/register.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() async {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
@@ -35,6 +38,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
+String user;
+
 class SecondClass extends StatefulWidget {
   @override
   _SecondClassState createState() => _SecondClassState();
@@ -45,10 +50,20 @@ class _SecondClassState extends State<SecondClass>
   AnimationController scaleController;
   Animation<double> scaleAnimation;
 
+  final FirebaseAuth auth = FirebaseAuth.instance;
+
   @override
   void initState() {
     super.initState();
+    user = FirebaseAuth.instance.currentUser.toString();
 
+    print(user);
+    if (user != null) {
+      MaterialPageRoute(builder: (context) => HomePage());
+    } else {
+      MaterialPageRoute(builder: (context) => Login());
+    }
+    //hhhhh
     scaleController = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 600),
@@ -90,32 +105,31 @@ class _SecondClassState extends State<SecondClass>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      body: Center(
-        child: DefaultTextStyle(
-          style: TextStyle(fontSize: 30.0),
-          child: AnimatedTextKit(
-            animatedTexts: [
-              TyperAnimatedText(
-                'E-Royal',
-                textStyle: GoogleFonts.indieFlower(
-                    textStyle: TextStyle(fontSize: 50, color: Colors.white)),
-                speed: Duration(milliseconds: 150),
-              ),
-              TyperAnimatedText(
-                ' Mart',
-                textStyle: GoogleFonts.indieFlower(
-                    textStyle: TextStyle(fontSize: 50, color: Colors.yellow)),
-                speed: Duration(milliseconds: 150),
-              ),
-            ],
-            isRepeatingAnimation: false,
-            repeatForever: false,
-            displayFullTextOnTap: false,
+        backgroundColor: Colors.black54,
+        body: Center(
+          child: DefaultTextStyle(
+            style: TextStyle(fontSize: 30.0),
+            child: AnimatedTextKit(
+              animatedTexts: [
+                TyperAnimatedText(
+                  'E-Royal',
+                  textStyle: GoogleFonts.indieFlower(
+                      textStyle: TextStyle(fontSize: 50, color: Colors.white)),
+                  speed: Duration(milliseconds: 150),
+                ),
+                TyperAnimatedText(
+                  ' Mart',
+                  textStyle: GoogleFonts.indieFlower(
+                      textStyle: TextStyle(fontSize: 50, color: Colors.yellow)),
+                  speed: Duration(milliseconds: 150),
+                ),
+              ],
+              isRepeatingAnimation: false,
+              repeatForever: false,
+              displayFullTextOnTap: false,
+            ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }
 
@@ -162,19 +176,35 @@ class Welcome extends StatelessWidget {
                                   TextStyle(color: Colors.white, fontSize: 20),
                             ),
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Login()));
+                              if (user == 'null') {
+                                print("null");
+                                Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                        builder: (context) => Login()),
+                                    (Route<dynamic> route) => false);
+                              } else {
+                                print("not null");
+                                Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                        builder: (context) => HomePage()),
+                                    (Route<dynamic> route) => false);
+                              }
                             },
                           ),
                           IconButton(
                               color: Colors.white,
                               onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const Login()));
+                                if (user == 'null') {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Login()));
+                                } else {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => HomePage()));
+                                }
                               },
                               icon: const Icon(
                                 Icons.arrow_forward,

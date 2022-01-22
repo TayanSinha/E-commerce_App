@@ -7,7 +7,6 @@ import 'package:sa/pages/forgetpassword.dart';
 import 'package:sa/register.dart';
 import 'package:sa/utils/color.dart';
 import 'package:sa/utils/reusable.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -70,7 +69,11 @@ class LoginState extends State<Login> {
                       .signInWithEmailAndPassword(
                           email: _emailTextController.text,
                           password: _passwordTextController.text)
-                      .then((value) {
+                      .then((value) async {
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(builder: (context) => HomePage()),
+                        (Route<dynamic> route) => false);
+
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => HomePage()),

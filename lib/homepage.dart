@@ -37,7 +37,7 @@ class HomePage extends StatelessWidget {
         ),
         ListTile(
             title: Text('My Orders',
-                style: GoogleFonts.indieFlower(
+                style: GoogleFonts.comfortaa(
                     textStyle: TextStyle(fontSize: 25, color: Colors.black))),
             onTap: () {
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -55,7 +55,7 @@ class HomePage extends StatelessWidget {
         ),
         ListTile(
             title: Text('About Us',
-                style: GoogleFonts.indieFlower(
+                style: GoogleFonts.comfortaa(
                     textStyle: TextStyle(fontSize: 25, color: Colors.black))),
             onTap: () => Navigator.push(
                 context, MaterialPageRoute(builder: (context) => Aboutus()))),
@@ -64,7 +64,7 @@ class HomePage extends StatelessWidget {
         ),
         ListTile(
             title: Text('Settings',
-                style: GoogleFonts.indieFlower(
+                style: GoogleFonts.comfortaa(
                     textStyle: TextStyle(fontSize: 25, color: Colors.black))),
             onTap: () => Navigator.push(
                 context, MaterialPageRoute(builder: (context) => Settings()))),
@@ -73,7 +73,7 @@ class HomePage extends StatelessWidget {
         ),
         ListTile(
             title: Text('Sign Out',
-                style: GoogleFonts.indieFlower(
+                style: GoogleFonts.comfortaa(
                     textStyle: TextStyle(fontSize: 25, color: Colors.black))),
             onTap: () {
               FirebaseAuth.instance.signOut().then(
@@ -151,9 +151,9 @@ class HomePage extends StatelessWidget {
                             height: 10,
                           ),
                           Text("ELECTRONICS",
-                              style: GoogleFonts.indieFlower(
+                              style: GoogleFonts.comfortaa(
                                   textStyle: TextStyle(
-                                      fontSize: 20, color: Colors.blue))),
+                                      fontSize: 15, color: Colors.blue))),
                         ],
                       )),
                 ),
@@ -182,9 +182,9 @@ class HomePage extends StatelessWidget {
                             height: 10,
                           ),
                           Text("CLOTHES",
-                              style: GoogleFonts.indieFlower(
+                              style: GoogleFonts.comfortaa(
                                   textStyle: TextStyle(
-                                      fontSize: 20, color: Colors.blue))),
+                                      fontSize: 15, color: Colors.blue))),
                         ],
                       )),
                 ),
@@ -218,9 +218,9 @@ class HomePage extends StatelessWidget {
                             height: 10,
                           ),
                           Text("GROCERY",
-                              style: GoogleFonts.indieFlower(
+                              style: GoogleFonts.comfortaa(
                                   textStyle: TextStyle(
-                                      fontSize: 20, color: Colors.blue))),
+                                      fontSize: 15, color: Colors.blue))),
                         ],
                       )),
                 ),
@@ -249,9 +249,9 @@ class HomePage extends StatelessWidget {
                             height: 10,
                           ),
                           Text("MEDICINE",
-                              style: GoogleFonts.indieFlower(
+                              style: GoogleFonts.comfortaa(
                                   textStyle: TextStyle(
-                                      fontSize: 20, color: Colors.blue))),
+                                      fontSize: 15, color: Colors.blue))),
                         ],
                       )),
                 ),
@@ -266,9 +266,9 @@ class HomePage extends StatelessWidget {
                       ),
                       Text(
                         "Deal of the Day,",
-                        style: GoogleFonts.indieFlower(
+                        style: GoogleFonts.comfortaa(
                             textStyle:
-                                TextStyle(fontSize: 30, color: Colors.red)),
+                                TextStyle(fontSize: 27, color: Colors.red)),
                       ),
                       SizedBox(
                         height: 0,
@@ -287,13 +287,13 @@ class HomePage extends StatelessWidget {
                         },
                       ),
                       Text("MRP:₹45,990.00 (Inclusive of all taxes)",
-                          style: GoogleFonts.indieFlower(
+                          style: GoogleFonts.comfortaa(
                               textStyle: TextStyle(
-                                  fontSize: 20, color: Colors.black))),
+                                  fontSize: 15, color: Colors.black))),
                       Text("(See all details)",
-                          style: GoogleFonts.indieFlower(
+                          style: GoogleFonts.comfortaa(
                               textStyle:
-                                  TextStyle(fontSize: 20, color: Colors.blue)))
+                                  TextStyle(fontSize: 15, color: Colors.blue)))
                     ],
                   ),
                 ),
@@ -303,8 +303,8 @@ class HomePage extends StatelessWidget {
               ),
               Text(
                 "Deals For You",
-                style: GoogleFonts.indieFlower(
-                    textStyle: TextStyle(fontSize: 30, color: Colors.red)),
+                style: GoogleFonts.comfortaa(
+                    textStyle: TextStyle(fontSize: 27, color: Colors.red)),
               ),
               SizedBox(
                 height: 19,
@@ -332,23 +332,6 @@ class HomePage extends StatelessWidget {
               SizedBox(
                 height: 29,
               ),
-              // Swiper(
-              //   autoplay: true,
-              //   scrollDirection: Axis.horizontal,
-              //   layout: SwiperLayout.STACK,
-              //   itemCount: imageList.length,
-              //   pagination:
-              //       SwiperPagination(builder: SwiperPagination.fraction),
-              //   itemBuilder: (context, index) {
-              //     return Image.asset(
-              //       imageList[index],
-              //       fit: BoxFit.fill,
-              //     );
-              //   },
-              //   itemWidth: 500,
-              //   itemHeight: 300,
-              // ),
-
               Card(
                 child: SizedBox(
                   height: 400,
@@ -359,9 +342,9 @@ class HomePage extends StatelessWidget {
                         height: 25,
                       ),
                       Text("Up to 42% off | Clothes & appliances",
-                          style: GoogleFonts.indieFlower(
+                          style: GoogleFonts.comfortaa(
                               textStyle:
-                                  TextStyle(fontSize: 25, color: Colors.red))),
+                                  TextStyle(fontSize: 15, color: Colors.red))),
                       SizedBox(
                         height: 25,
                       ),
@@ -390,9 +373,9 @@ class HomePage extends StatelessWidget {
                         ),
                         Text(
                           "No Cost EMI",
-                          style: GoogleFonts.indieFlower(
+                          style: GoogleFonts.comfortaa(
                               textStyle:
-                                  TextStyle(fontSize: 20, color: Colors.green)),
+                                  TextStyle(fontSize: 15, color: Colors.green)),
                         ),
                         SizedBox(
                           width: 10,
@@ -406,22 +389,21 @@ class HomePage extends StatelessWidget {
                         ),
                         Text(
                           "Sheduled Delivery",
-                          style: GoogleFonts.indieFlower(
+                          style: GoogleFonts.comfortaa(
                               textStyle:
-                                  TextStyle(fontSize: 20, color: Colors.green)),
+                                  TextStyle(fontSize: 15, color: Colors.green)),
                         )
                       ])
                     ],
                   ),
                 ),
               ),
-//
               SizedBox(
                 height: 20,
               ),
               Text(
                 "Interesting Finds",
-                style: GoogleFonts.indieFlower(
+                style: GoogleFonts.comfortaa(
                     textStyle: TextStyle(fontSize: 30, color: Colors.red)),
               ),
               Row(children: [
@@ -454,12 +436,12 @@ class HomePage extends StatelessWidget {
                             height: 10,
                           ),
                           Text("Mobile Stands",
-                              style: GoogleFonts.indieFlower(
+                              style: GoogleFonts.comfortaa(
                                   textStyle: TextStyle(
                                       fontSize: 25, color: Colors.black))),
                           Text(
                             "From ₹299 ",
-                            style: GoogleFonts.indieFlower(
+                            style: GoogleFonts.comfortaa(
                                 textStyle: TextStyle(color: Colors.green)),
                           )
                         ],
@@ -490,19 +472,18 @@ class HomePage extends StatelessWidget {
                             height: 10,
                           ),
                           Text("Furniture",
-                              style: GoogleFonts.indieFlower(
+                              style: GoogleFonts.comfortaa(
                                   textStyle: TextStyle(
                                       fontSize: 25, color: Colors.black))),
                           Text(
                             "Up to 80% off ",
-                            style: GoogleFonts.indieFlower(
+                            style: GoogleFonts.comfortaa(
                                 textStyle: TextStyle(color: Colors.green)),
                           )
                         ],
                       )),
                 ),
               ]),
-
               Row(children: [
                 SizedBox(
                   height: 10,
@@ -533,12 +514,12 @@ class HomePage extends StatelessWidget {
                             height: 5,
                           ),
                           Text("Medicines",
-                              style: GoogleFonts.indieFlower(
+                              style: GoogleFonts.comfortaa(
                                   textStyle: TextStyle(
                                       fontSize: 25, color: Colors.black))),
                           Text(
                             "At you doresteps 24x7 ",
-                            style: GoogleFonts.indieFlower(
+                            style: GoogleFonts.comfortaa(
                                 textStyle: TextStyle(color: Colors.green)),
                           )
                         ],
@@ -569,20 +550,18 @@ class HomePage extends StatelessWidget {
                             height: 10,
                           ),
                           Text("Vegitable",
-                              style: GoogleFonts.indieFlower(
+                              style: GoogleFonts.comfortaa(
                                   textStyle: TextStyle(
                                       fontSize: 25, color: Colors.black))),
                           Text(
                             "Delivery Free for first order ",
-                            style: GoogleFonts.indieFlower(
+                            style: GoogleFonts.comfortaa(
                                 textStyle: TextStyle(color: Colors.green)),
                           ),
                         ],
                       )),
                 ),
               ]),
-
-//
             ])),
         drawer: Drawer(
             child: Container(

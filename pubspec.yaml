@@ -33,13 +33,16 @@ dependencies:
   card_swiper: ^2.0.1
   carousel_images: ^1.1.2
   carousel_slider: ^4.0.0
+  cloud_firestore: ^3.1.6
   convex_bottom_bar: ^3.0.0
   cupertino_icons: ^1.0.2
   firebase_analytics: ^9.0.5
   firebase_auth: ^3.3.5
   firebase_core: ^1.11.0
+  firebase_database: ^9.0.5
   flutter:
     sdk: flutter
+  flutter_launcher_name: ^0.0.1
   flutter_swiper: ^1.1.6
   google_fonts: ^2.2.0
   google_sign_in: ^5.2.1
@@ -54,6 +57,13 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+flutter_launcher_name:
+  name: "E-Royal Mart"
+
+# flutter_icons:
+#   android: "launcher_icon"
+#   ios: true
+#   image_path: "assets/logo.png"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter.

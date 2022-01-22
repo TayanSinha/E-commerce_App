@@ -8,9 +8,10 @@ import 'package:sa/utils/reusable.dart';
 
 class Settings extends StatelessWidget {
   const Settings({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    String user;
+    user = FirebaseAuth.instance.currentUser.toString();
     return Scaffold(
         backgroundColor: Colors.pink[100],
         appBar: AppBar(
@@ -20,6 +21,7 @@ class Settings extends StatelessWidget {
         body: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(children: [
+              Text(user),
               const SizedBox(
                 height: 400,
               ),
@@ -41,14 +43,6 @@ class Settings extends StatelessWidget {
                   },
                 );
               })),
-              // if (localStorage != null)
-              //   Padding(
-              //     padding: const EdgeInsets.all(15.0),
-              //     child: Text(
-              //       "User Logged in!!! ->  Email Id: ${localStorage.get('email')}  Password: ${localStorage.get('password')}",
-              //       style: const TextStyle(fontSize: 20),
-              //     ),
-              //   ),
               firebaaseButton(
                 context,
                 "Reset Password",
