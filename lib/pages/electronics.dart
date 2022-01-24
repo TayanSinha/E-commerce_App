@@ -42,6 +42,21 @@ class _ElectronicsState extends State<Electronics> {
                   if (snapshot.hasData && !snapshot.data.exists) {
                     return Text("Document does not exist");
                   }
+                  if (!snapshot.hasData) {
+                    return Container(
+                        child: Column(
+                      children: const [
+                        Text(
+                          "Loading... Please wait",
+                          style: TextStyle(fontSize: 30),
+                        ),
+                        Icon(
+                          Icons.do_not_touch,
+                          size: 50,
+                        ),
+                      ],
+                    ));
+                  }
                   Map<String, dynamic> elecdetail =
                       snapshot.data.data() as Map<String, dynamic>;
 
